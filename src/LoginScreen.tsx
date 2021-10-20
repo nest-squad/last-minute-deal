@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Alert, Button, TextInput} from 'react-native';
-import {app} from './firebase';
+import {app} from '../firebase';
 
 const LoginScreen = ({}: any) => {
   const [email, setEmail] = useState('');
