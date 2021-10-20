@@ -1,10 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {HomeScreen} from './src/HomeScreen';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.textContainer}>
-      <Text style={styles.textStyle}>Last minute deal</Text>
+      <HomeScreen />
     </SafeAreaView>
   );
 };
