@@ -12,6 +12,8 @@ target 'LastMinuteDeal' do
     :hermes_enabled => false
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'LastMinuteDealTests' do
     inherit! :complete
     # Pods for testing
