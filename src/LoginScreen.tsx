@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, Alert, Button, TextInput} from 'react-native';
 import {app} from '../firebase';
 
-const LoginScreen = ({}: any) => {
+export const LoginScreen = ({}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,5 +35,3 @@ const LoginScreen = ({}: any) => {
     </View>
   );
 };
-
-export default LoginScreen;
