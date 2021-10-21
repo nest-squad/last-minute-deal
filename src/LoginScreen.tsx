@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {View, Text, Alert, Button, TextInput} from 'react-native';
-import {app} from './firebase';
+import {app} from '../firebase';
+import tw from 'tailwind-react-native-classnames';
 
-const LoginScreen = ({}: any) => {
+export const LoginScreen = ({}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,8 +21,8 @@ const LoginScreen = ({}: any) => {
   };
 
   return (
-    <View>
-      <Text>Login Screens</Text>
+    <View style={tw`ios:pt-4 android:pt-2 `}>
+      <Text style={tw`text-red-200`}>Login Screens</Text>
       <TextInput
         onChangeText={text => setEmail(text)}
         placeholder="Enter Your Email"
@@ -31,9 +32,7 @@ const LoginScreen = ({}: any) => {
         placeholder="Enter Your password"
         secureTextEntry
       />
-      <Button title="register" onPress={signIn} />
+      <Button title="Log in" onPress={signIn} />
     </View>
   );
 };
-
-export default LoginScreen;
