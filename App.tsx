@@ -1,11 +1,13 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import {LoginScreen} from './src/LoginScreen';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { HomeScreen } from './src/HomeScreen';
+import { DetailScreen } from './src/screens/detail/DetailScreen';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.textContainer}>
-      <LoginScreen />
+    <SafeAreaView>
+      {/* <HomeScreen /> */}
+      <DetailScreen />
     </SafeAreaView>
   );
 };
