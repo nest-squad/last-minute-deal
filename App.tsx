@@ -1,28 +1,14 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { HomeScreen } from './src/HomeScreen';
-import { DetailScreen } from './src/screens/detail/DetailScreen';
+import { SafeAreaView } from 'react-native';
+import tw from 'tailwind-react-native-classnames';
+import { RootStack } from './src/navigation';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      {/* <HomeScreen /> */}
-      <DetailScreen />
+    <SafeAreaView style={tw`flex-1`}>
+      <RootStack />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  textContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-    fontSize: 32,
-    fontWeight: '700',
-    textAlign: 'center',
-  },
-});
 
 export default App;

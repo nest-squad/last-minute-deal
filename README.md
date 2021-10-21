@@ -11,7 +11,13 @@ In the project directory, you can run:
 To start the application
 
 For ios:
+
+### `yarn pod`
+
+To install pod on ios
+
 ### `yarn ios`
 
 For android:
+
 ### `yarn android`
