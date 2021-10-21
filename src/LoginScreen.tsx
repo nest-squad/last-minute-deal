@@ -32,7 +32,7 @@ export const LoginScreen = ({}: any) => {
         placeholder="Enter Your password"
         secureTextEntry
       />
-      <Button title="register" onPress={signIn} />
+      <Button title="Log in" onPress={signIn} />
     </View>
   );
 };
