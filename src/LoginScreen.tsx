@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, Button, TextInput } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import tw from 'tailwind-react-native-classnames';
 
@@ -11,10 +12,12 @@ export const LoginScreen = ({}: any) => {
   const signIn = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(response => {
+        const user = response.user;
+        AsyncStorage.setItem('useruid', user.uid);
         Alert.alert('Successfully Logged In', `Hello, ${email}`);
       })
-      .catch((e: any) => console.log(e.message));
+      .catch((e: any) => Alert.alert(e.message));
   };
 
   return (

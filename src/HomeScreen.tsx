@@ -51,7 +51,6 @@ export const HomeScreen = () => {
     try {
       const value = await AsyncStorage.getItem('status');
       if (value !== null) {
-        // value previously stored
         setStatus(value);
         console.log(value);
       }
