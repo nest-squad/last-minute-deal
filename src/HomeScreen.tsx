@@ -19,29 +19,34 @@ import firestore from '@react-native-firebase/firestore';
 
 import { ProductCardType } from './entity/Product';
 
-const dummy: ProductCardType[] = [
-  {
-    id: '1',
-    title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-    price: 10995,
-    description:
-      'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-    category: "men's clothing",
-    image:
-      'https://firebasestorage.googleapis.com/v0/b/nest-app-3f9ac.appspot.com/o/243864927_2654794174667222_4641748946496895499_n.jpg?alt=media&token=384a0084-b2b8-412e-9805-e30a2b8482d9',
-    discountPercent: 40,
-  },
-];
-
 export const HomeScreen = () => {
-  const [products, setProducts] = useState<ProductCardType[]>(dummy);
+  const [products, setProducts] = useState<ProductCardType[]>([]);
   const [status, setStatus] = useState<string>();
   const [isVisible, setVisible] = useState<boolean>();
 
   useEffect(() => {
-    getProducts();
+    firestore()
+      .collection('products')
+      .get()
+      .then(response => {
+        let data = response.docs.map(product => {
+          let tmp = product.data();
+          return {
+            id: product.id,
+            title: tmp.title,
+            price: tmp.price,
+            description: tmp.description,
+            category: tmp.category.name,
+            image: tmp.imgUrl,
+            discountPercent: tmp.discount,
+          };
+        });
+        setProducts(data);
+      })
+      .catch(e => console.log(e.message));
     getData();
   }, [status]);
+
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('status');
@@ -53,17 +58,6 @@ export const HomeScreen = () => {
     } catch (e) {
       // error reading value
     }
-  };
-
-  const getProducts = async () => {
-    firestore()
-      .collection('products')
-      .get()
-      .then(product => {
-        console.log(product.docs);
-      });
-
-    setProducts(products);
   };
 
   return (
