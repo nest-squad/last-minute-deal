@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "526547919874",
+    "firebase_url": "https://nest-app-3f9ac-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "nest-app-3f9ac",
+    "storage_bucket": "nest-app-3f9ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526547919874:android:755e377946e3ce90caf31b",
+        "android_client_info": {
+          "package_name": "com.nest.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526547919874-1v8u9c0ijot81t3i4rdf6eafsk81rb95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOHKC8ZxGfjLPap6T1zl6NViVxZC7gW_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526547919874-1v8u9c0ijot81t3i4rdf6eafsk81rb95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

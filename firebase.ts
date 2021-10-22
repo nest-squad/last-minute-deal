@@ -1,6 +1,6 @@
-import * as firebase from '@react-native-firebase/app';
+import firebase from '@react-native-firebase/app';
+import '@react-native-firebase/firestore';
 import '@react-native-firebase/auth';
-import '@firebase/firestore';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyCx3ktFXTYhA7qnETu38dGyvZzIJMcVIwg',
@@ -13,6 +13,6 @@ var firebaseConfig = {
   measurementId: 'G-Y6E3XKSTBL',
 };
 
-const app = firebase.default.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-export {app};
+export { app };
