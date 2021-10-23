@@ -5,6 +5,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import BottomTab from './BottomTab';
 import { DetailScreen } from '../screens/DetailScreen';
 import { LoginScreen } from '../screens/LoginScreen';
+import { SplashScreen } from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +26,9 @@ export const RootStack = () => {
           component={BottomTab}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{
+            headerTitle: 'Sign In',
+          }}
           name="Login"
           component={LoginScreen}
         />
@@ -42,7 +45,7 @@ export const HomeStack = () => {
           color: '#F87171',
         },
       }}
-      initialRouteName="Home">
+      initialRouteName="Splash">
       <Stack.Screen
         options={{
           headerTitle: 'Deal list',
@@ -55,6 +58,7 @@ export const HomeStack = () => {
         name="Detail"
         component={DetailScreen}
       />
+      <Stack.Screen name="Splash" component={SplashScreen} />
     </Stack.Navigator>
   );
 };
