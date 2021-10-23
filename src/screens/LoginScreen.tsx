@@ -4,18 +4,24 @@ import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import tw from 'tailwind-react-native-classnames';
+import { useNavigation } from '@react-navigation/core';
 
 export const LoginScreen = ({}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const setTokenToStorage = AsyncStorage.setItem;
+  const navigation = useNavigation();
   const signIn = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(response => {
+      .then(async response => {
         const user = response.user;
-        AsyncStorage.setItem('useruid', user.uid);
+
+        await setTokenToStorage('useruid', user.uid);
+        await setTokenToStorage('status', 'costumer');
+
         Alert.alert('Successfully Logged In', `Hello, ${email}`);
+        navigation.navigate('Home');
       })
       .catch((e: any) => Alert.alert(e.message));
   };

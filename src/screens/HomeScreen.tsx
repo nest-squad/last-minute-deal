@@ -13,11 +13,11 @@ import {
 } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ProductCard } from './components/ProductCard';
+import { ProductCard } from '../components/ProductCard';
 // import { app } from '../firebase';
 import firestore from '@react-native-firebase/firestore';
 
-import { ProductCardType } from './entity/Product';
+import { ProductCardType } from '../entity/Product';
 
 export const HomeScreen = () => {
   const [products, setProducts] = useState<ProductCardType[]>([]);
@@ -38,6 +38,10 @@ export const HomeScreen = () => {
             description: tmp.description,
             category: tmp.category.name,
             image: tmp.imgUrl,
+            orgName: tmp.orgName,
+            location: tmp.location,
+            phone: tmp.phone,
+            end_date: tmp.end_date,
             discountPercent: tmp.discount,
           };
         });
@@ -65,9 +69,7 @@ export const HomeScreen = () => {
         <FlatList
           bounces
           alwaysBounceHorizontal={false}
-          renderItem={({ item }: { item: ProductCardType }) => (
-            <ProductCard {...item} />
-          )}
+          renderItem={({ item }: { item: any }) => <ProductCard {...item} />}
           data={products}
         />
       ) : (

@@ -15,12 +15,16 @@ export interface ProductI {
   imgUrl: string;
 }
 
-export type ProductCardType = {
-  id: string;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  discountPercent: number;
-};
+export type ProductCardType =
+  | {
+      id: string;
+      title: string;
+      price: number;
+      description: string;
+      category: string;
+      image: string;
+      end_date: string;
+      discountPercent: number;
+      orgName: string;
+    }
+  | undefined;

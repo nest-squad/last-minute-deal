@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { HomeStack } from '.';
-import { LoginScreen } from '../LoginScreen';
-import { ProfileScreen } from '../ProfileScreen';
+import { LoginScreen } from '../screens/LoginScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
