@@ -1,10 +1,19 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { HomeStack } from '.';
+import { LoginScreen } from '../LoginScreen';
 import { ProfileScreen } from '../ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const [user, setUser] = useState<string | null>();
+
+  AsyncStorage.getItem('useruid').then(value => {
+    setUser(value);
+  });
+
   return (
     <Tab.Navigator screenOptions={{ tabBarActiveTintColor: '#F87171' }}>
       <Tab.Screen
@@ -12,15 +21,27 @@ const BottomTab = () => {
         name={'Home'}
         component={HomeStack}
       />
-      <Tab.Screen
-        options={{
-          headerTitleStyle: {
-            color: '#F87171',
-          },
-        }}
-        name={'Profile'}
-        component={ProfileScreen}
-      />
+      {user ? (
+        <Tab.Screen
+          options={{
+            headerTitleStyle: {
+              color: '#F87171',
+            },
+          }}
+          name={'Profile'}
+          component={ProfileScreen}
+        />
+      ) : (
+        <Tab.Screen
+          options={{
+            headerTitleStyle: {
+              color: '#F87171',
+            },
+          }}
+          name={'Sign In'}
+          component={LoginScreen}
+        />
+      )}
     </Tab.Navigator>
   );
 };

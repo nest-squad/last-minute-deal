@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, View, Image, Text } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { productType } from '../HomeScreen';
+import { ProductCardType } from '../entity/Product';
 
 export const ProductCard = ({
   title,
@@ -10,7 +10,7 @@ export const ProductCard = ({
   image,
   discountPercent,
   description,
-}: productType) => {
+}: ProductCardType) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
