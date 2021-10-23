@@ -10,6 +10,9 @@ export const ProductCard = ({
   image,
   discountPercent,
   description,
+  orgName,
+  location,
+  phone,
 }: ProductCardType) => {
   const navigation = useNavigation();
   return (
@@ -23,6 +26,9 @@ export const ProductCard = ({
           image,
           discountPercent,
           description,
+          orgName,
+          location,
+          phone,
         })
       }>
       <View style={tw`flex-1 bg-red-200 p-4 rounded-2xl flex-row`}>
