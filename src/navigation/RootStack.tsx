@@ -15,7 +15,6 @@ export const RootStack = () => {
       <Stack.Navigator
         screenOptions={{
           contentStyle: {
-            marginHorizontal: 16,
             backgroundColor: 'transparent',
           },
         }}
