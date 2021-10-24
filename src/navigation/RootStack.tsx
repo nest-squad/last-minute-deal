@@ -25,6 +25,11 @@ export const RootStack = () => {
           component={BottomTab}
         />
         <Stack.Screen
+          options={{ headerShown: false }}
+          name="HomeStack"
+          component={HomeStack}
+        />
+        <Stack.Screen
           options={{
             headerTitle: 'Sign In',
           }}
@@ -41,10 +46,10 @@ export const HomeStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerTitleStyle: {
-          color: '#F87171',
+          color: '#d79c66',
         },
       }}
-      initialRouteName="Splash">
+      initialRouteName="Home">
       <Stack.Screen
         options={{
           headerTitle: 'Deal list',
@@ -57,7 +62,11 @@ export const HomeStack = () => {
         name="Detail"
         component={DetailScreen}
       />
-      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Splash"
+        component={SplashScreen}
+      />
     </Stack.Navigator>
   );
 };

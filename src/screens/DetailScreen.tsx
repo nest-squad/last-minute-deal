@@ -7,7 +7,6 @@ import {
   Image,
   useWindowDimensions,
   ScrollView,
-  StyleSheet,
   Button,
 } from 'react-native';
 import AntDesignicons from 'react-native-vector-icons/AntDesign';
@@ -116,8 +115,13 @@ export const DetailScreen = () => {
           <Text style={tw``}>Contact: {phone}</Text>
         </View>
         <Button
+          color={'#88491e'}
           title={'Байршил авах'}
-          onPress={() => Linking.openURL('http://map.google.com')}
+          onPress={() =>
+            Linking.openURL(
+              'https://www.google.com/maps/place/Хүннү+худалдааны+төв,+Yaarmag+Road,+Улаанбаатар/@47.8774049,106.851311,16z/data=!4m5!1m2!2m1!1stous+les+jours!3m1!1s0x5d969363e5cbb19f:0x6141661cea814655',
+            )
+          }
         />
       </>
     );
