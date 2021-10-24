@@ -40,7 +40,7 @@ export const HomeScreen = () => {
             image: tmp.imgUrl,
             orgName: tmp.orgName,
             location: tmp.location,
-            phone: tmp.phone,
+            phone: tmp.phoneNumber,
             end_date: tmp.end_date,
             discountPercent: tmp.discount,
           };
