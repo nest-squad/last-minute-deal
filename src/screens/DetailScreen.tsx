@@ -6,11 +6,13 @@ import {
   Linking,
   Image,
   useWindowDimensions,
+  ScrollView,
   StyleSheet,
   Button,
 } from 'react-native';
 import AntDesignicons from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feathericons from 'react-native-vector-icons/Feather';
 import tw from 'tailwind-react-native-classnames';
 
 export const DetailScreen = () => {
@@ -19,77 +21,113 @@ export const DetailScreen = () => {
   const [changeColor, setChangeColor] = useState(false);
   const onSave = () => setChangeColor(preState => !preState);
 
-  const style = StyleSheet.create({
-    imgStyle: {
-      width: dimensions.width,
-      height: 300,
-    },
-  });
-
   const {
-    title,
-    description,
-    price,
     image,
-    end_date,
-    orgName,
-    location,
-    phone,
+    title,
+    price,
     discountPercent,
+    description,
+    location,
+    orgName,
+    phone,
+    endDate,
   }: any = route.params;
 
-  return (
-    <View style={tw`flex-1 bg-white justify-around`}>
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={style.imgStyle}
-      />
-
-      <View style={tw`flex-row justify-between items-center`}>
-        <View>
-          <Text style={tw`py-1 text-red-400 font-bold text-3xl`}>{title}</Text>
-          <View style={tw`flex-row my-1`}>{end_date}</View>
-        </View>
-        <Text style={tw`py-2 text-gray-900 font-bold text-2xl`}>
-          {price} ₮ | {discountPercent}
-        </Text>
-      </View>
-      {/* restaurant name, location, phone number, heart */}
-      <View style={tw`mt-5 mb-2 flex-row justify-between items-center`}>
-        <View>
-          <View style={tw`flex-row m-1`}>
-            <Ionicons name="restaurant" size={21} color="#F15B5D" />
-            <Text style={tw`mx-1`}>{orgName}</Text>
-          </View>
-          <View style={tw`flex-row m-1`}>
-            <Ionicons name="location-sharp" size={21} color="#F15B5D" />
-            <Text style={tw`mx-1`}>{location}</Text>
-          </View>
-          <View style={tw`flex-row m-1`}>
-            <AntDesignicons name="contacts" size={21} color="#F15B5D" />
-            <Text style={tw`mx-1`}>{phone}</Text>
-          </View>
-        </View>
-        <AntDesignicons
-          name={changeColor ? 'heart' : 'hearto'}
-          size={25}
-          color="#F15B5D"
-          onPress={onSave}
+  const DetailHeader = () => {
+    return (
+      <View style={tw`relative`}>
+        {/* Image and heart */}
+        <Image
+          source={{ uri: image }}
+          style={{
+            width: dimensions.width,
+            height: 300,
+          }}
         />
+        <View style={tw`absolute right-5 bottom-5 p-3 rounded-full bg-white`}>
+          <AntDesignicons
+            name={changeColor ? 'heart' : 'hearto'}
+            size={25}
+            color="#F15B5D"
+            onPress={onSave}
+          />
+        </View>
       </View>
+    );
+  };
 
-      {/* Description */}
-      <View style={tw`my-2`}>
-        <Text>Товч тайлбар</Text>
-        <Text style={tw`my-2 text-gray-900 font-semibold`}>{description}</Text>
+  const DetailMiddle = () => {
+    return (
+      <>
+        {/* dish name and price */}
+        <View style={tw`flex-row justify-between items-center py-2`}>
+          <Text style={tw`text-gray-900 font-bold text-2xl`}>{title}</Text>
+          <Text style={tw`text-red-500 font-bold text-lg`}>{price}₮</Text>
+        </View>
+        {/* location */}
+        <View style={tw`flex-row`}>
+          <Ionicons name="location-sharp" size={21} />
+          <Text style={tw`mx-1`}>{location}</Text>
+        </View>
+        {/* Discount and end date */}
+        <View style={tw`flex-row justify-between mt-7 mb-4`}>
+          <View style={tw`flex-row m-1 items-center`}>
+            <View style={tw`p-3 rounded-full bg-yellow-300`}>
+              <Feathericons name="percent" size={25} color="#fff" />
+            </View>
+            <View style={tw`mx-2`}>
+              <Text style={tw`text-lg text-black font-semibold`}>
+                {discountPercent}%
+              </Text>
+              <Text>Discount</Text>
+            </View>
+          </View>
+          <View style={tw`flex-row m-1 items-center`}>
+            <View style={tw`p-3 rounded-full bg-red-400`}>
+              <Feathericons name="calendar" size={25} color="#fff" />
+            </View>
+            <View style={tw`mx-2`}>
+              <Text style={tw`text-lg text-black font-semibold`}>
+                {endDate}
+              </Text>
+              <Text>End Date</Text>
+            </View>
+          </View>
+        </View>
+      </>
+    );
+  };
+
+  const DetailFooter = () => {
+    return (
+      <>
+        {/* Description */}
+        <View style={tw`my-2`}>
+          <Text style={tw`text-black uppercase text-lg border-b w-20`}>
+            Details
+          </Text>
+          <Text style={tw`my-2 font-normal text-gray-500`}>{description}</Text>
+        </View>
+        {/* restaurant name, phone number */}
+        <View style={tw`mb-2`}>
+          <Text style={tw`mb-1`}>Name: {orgName}</Text>
+          <Text style={tw``}>Contact: {phone}</Text>
+        </View>
+        <Button
+          title={'Байршил авах'}
+          onPress={() => Linking.openURL('http://map.google.com')}
+        />
+      </>
+    );
+  };
+
+  return (
+    <ScrollView showsVerticalScrollIndicator={false} style={tw`bg-white`}>
+      <DetailHeader />
+      <View style={tw`p-4`}>
+        <DetailMiddle />
+        <DetailFooter />
       </View>
-
-      <Button
-        title={'Байршил авах'}
-        onPress={() => Linking.openURL('http://map.google.com')}
-      />
-    </View>
+    </ScrollView>
   );
 };
