@@ -13,6 +13,7 @@ export const ProductCard = ({
   orgName,
   location,
   phone,
+  end_date,
 }: ProductCardType) => {
   const navigation = useNavigation();
   return (
@@ -29,6 +30,7 @@ export const ProductCard = ({
           orgName,
           location,
           phone,
+          end_date,
         })
       }>
       <View style={tw`flex-1 bg-red-200 p-4 rounded-2xl flex-row`}>

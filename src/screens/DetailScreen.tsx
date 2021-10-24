@@ -14,6 +14,7 @@ import AntDesignicons from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feathericons from 'react-native-vector-icons/Feather';
 import tw from 'tailwind-react-native-classnames';
+import moment from 'moment';
 
 export const DetailScreen = () => {
   const dimensions = useWindowDimensions();
@@ -30,7 +31,7 @@ export const DetailScreen = () => {
     location,
     orgName,
     phone,
-    endDate,
+    end_date,
   }: any = route.params;
 
   const DetailHeader = () => {
@@ -57,6 +58,7 @@ export const DetailScreen = () => {
   };
 
   const DetailMiddle = () => {
+    console.log(end_date);
     return (
       <>
         {/* dish name and price */}
@@ -88,7 +90,7 @@ export const DetailScreen = () => {
             </View>
             <View style={tw`mx-2`}>
               <Text style={tw`text-lg text-black font-semibold`}>
-                {endDate}
+                {moment(end_date).fromNow()}
               </Text>
               <Text>End Date</Text>
             </View>
