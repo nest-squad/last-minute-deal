@@ -7,7 +7,7 @@ import img from '../assets/Food_logo.png';
 export const SplashScreen = () => {
   const navigation = useNavigation();
   return (
-    <View style={tw`bg-red-400 w-full h-full`}>
+    <View style={[tw` w-full h-full`, { backgroundColor: '#88491e' }]}>
       <Image
         source={img}
         style={tw`justify-center self-center m-5 w-3/4 h-1/2 m-10`}

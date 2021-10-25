@@ -18,7 +18,7 @@ export const LoginScreen = ({}: any) => {
         const user = response.user;
 
         await setTokenToStorage('useruid', user.uid);
-        await setTokenToStorage('status', 'costumer');
+        await setTokenToStorage('status', 'customer');
 
         Alert.alert('Successfully Logged In', `Hello, ${email}`);
         navigation.navigate('Home');
@@ -27,18 +27,19 @@ export const LoginScreen = ({}: any) => {
   };
 
   return (
-    <View style={tw`ios:pt-4 android:pt-2 `}>
-      <Text style={tw`text-red-200`}>Login Screens</Text>
+    <View style={tw`ios:pt-4 android:pt-2 flex-1 justify-center px-4`}>
       <TextInput
         onChangeText={text => setEmail(text)}
         placeholder="Enter Your Email"
+        style={tw`bg-gray-200 mx-6 h-10 rounded-full p-3 text-black mb-2`}
       />
       <TextInput
         onChangeText={text => setPassword(text)}
         placeholder="Enter Your password"
         secureTextEntry
+        style={tw`bg-gray-200 mx-6 h-10 rounded-full p-3 text-black mb-2`}
       />
-      <Button title="Log in" onPress={signIn} />
+      <Button title="Sign in" onPress={signIn} color={'#88491e'} />
     </View>
   );
 };
